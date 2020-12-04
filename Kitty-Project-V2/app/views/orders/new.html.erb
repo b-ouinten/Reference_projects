@@ -1,0 +1,25 @@
+<div class="container pt-5">
+  <div class="row mt-5">
+    <div class="col-xs col-md-6 offset-md-3 text-center">
+      <%= form_for Order.new, url: orders_path do |f| %>
+        <div>
+          <% if flash[:error].present? %>
+            <div class="alert alert-warning" id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+          <label class="col-form-label">
+            <span>Vous êtes sur le point de payer votre commande au total de : <%= current_user_cart_total %> €</span>
+          </label>
+        </div>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="<%= current_user_cart_total * 100 %>"
+                data-currency="eur"
+                data-locale="auto"></script>
+      <% end %>
+    </div>
+  </div>
+</div>

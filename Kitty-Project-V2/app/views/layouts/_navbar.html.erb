@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="/">Ze Kitten Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+      <a class="nav-link" href="/contact">Contact <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  
+  <% if user_signed_in? == false%>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+      <a class="dropdown-item" href="/users/sign_up">S'inscrire</a>
+      <a class="dropdown-item" href="/users/sign_in">Se connecter</a>
+    </div>
+  </div>
+
+  <%else%>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bienvenue <%=current_user.first_name%></button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+      <a class="dropdown-item" href=<%= mon_profil_path %>>Mon Profil</a>
+      <%= link_to "Se déconnecter", destroy_user_session_path, :class => "dropdown-item", method: :delete %>
+    </div>
+    <a class="btn btn-secondary d-flex flex-row justify-content-between align-items-center px-3 py-1" href = "<%= mon_panier_path %>"><span class='mr-1'>Mon panier</span><span class='d-flex flex-column justify-content-center align-items-center ml-1'><span id="items_count" class='my-0 py-0 font-weight-bold text-danger h6'><%= current_user_cart_items_count %></span><span class='my-0 py-0'>🛒</span></span></a>
+  </div>
+  <%end%>
+</div>
+</nav>

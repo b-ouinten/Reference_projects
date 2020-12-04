@@ -1,0 +1,92 @@
+<div id=<%= @proposal.id %> class="my-proposal container">
+  <br>
+  <h3><b>La proposition</b></h3>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-6 text-wrap text-justify">
+      <div class="col">
+        <div class="card card-product box">
+          <%if @proposal.picture.attached?%>
+            <div class="card-image" data-header-animation="true">
+              <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
+            </div>
+          <%else%>
+            <div class="card-image" data-header-animation="true">
+              <%= image_tag("home.jpg", style: "height: 50vh;")%>
+            </div>
+          <%end%>
+          <div class="card-header">
+            <h4 class="card-title"><%= @proposal.title %><br>
+              <div>
+                <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
+                <span class="badge badge-primary"><%= @proposal.category.name %></span>
+              </div>
+            </h4>
+          </div>
+          <div class="card-content">
+            <ul class="nav nav-pills nav-pills-warnin">
+              <li class="active primary">
+                <a href="#pill1" data-toggle="tab">Problème adressé</a>
+              </li>
+              <li>
+                <a href="#pill2" data-toggle="tab">Solution proposée</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="pill1">
+                <%= @proposal.purpose %>
+              </div>
+              <div class="tab-pane" id="pill2">
+                <%= @proposal.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+        <div class="col">
+            <% if is_current_user_admin? %>
+              <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+                <%= file_field_tag :picture %>
+                <%= submit_tag "Mettre à jour" %>
+              <% end %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class='col-md-1'></div>
+    <div id='proposal-info' class="col-md-5">
+      <div class="col">
+        <div class="card card-testimonial box">
+          <div class="card-content">
+            <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
+            <h6 class="card-title" style="margin-bottom: 0px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
+            <small class='text-muted' style='font-style: italic;'> Crée le <%= @proposal.created_at.strftime('%d/%m/%Y') %></small>
+            <div>
+              <% if is_current_user_owner_of?(@proposal) %>
+                <button id="tweet-btn" class="btn btn-simple btn-twitter" style="margin-top: 0px; margin-bottom: 0px">
+                  <i class="fa fa-twitter"></i> Tweeter ma proposition
+                </button><br>
+                <small class="text-muted">Besoin d'éditer votre proposition ? Ecrivez au support Agora !</small><br>
+                <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
+              <% end %>
+            </div>
+          </div>
+          <div class="footer">
+            <% if @proposal.user.avatar.attached? %>
+              <div class="card-avatar">
+                <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
+              </div>
+            <% else %>
+              <div class="card-avatar">
+                <%= image_tag("avatar.png", style: "width:100%; height: auto;")%> 
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render 'proposals/proposal_vote_informations', proposal: @proposal %>
+    </div>
+  </div>
+</div>

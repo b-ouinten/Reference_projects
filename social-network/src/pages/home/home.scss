@@ -1,0 +1,26 @@
+@import 'src/common';
+
+.home {
+  p.intro {
+    margin: 1rem;
+    padding: 1rem;
+    font-size: map-get($map: $font-size, $key: normal);
+    border: 1px $default-border-color solid;
+    border-radius: 10px;
+    background-color: lighten($main-color, 40%);
+  }
+  
+  .newPost {
+    padding: 1rem;
+  }
+  
+  .posts {
+    margin: 0;
+    padding: 0;
+    border-top: 10px lighten($color: $main-color, $amount: 10%) solid;
+    
+    .post {
+      padding: 1rem;
+    }
+  }
+}

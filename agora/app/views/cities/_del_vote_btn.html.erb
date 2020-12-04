@@ -1,0 +1,1 @@
+<%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, city_proposal_vote_path(x.city.id, x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", id: 'del-vote-btn-1', method: :delete, remote: true %>

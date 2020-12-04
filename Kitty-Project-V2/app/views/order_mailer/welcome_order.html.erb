@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Merci pour votre commande</h1>
+    </p> Commande numéro <%= @order.id %></p>
+
+    <br>
+    <br>
+
+  
+ <%= @order.items.each do |item| %>
+<%= image_tag(item.image,  :size => "260x180") %> 
+  <%end%>
+ <br>
+ <br>
+
+ <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur Ze Kitten Project !</p>
+  </body>
+</html>

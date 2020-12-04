@@ -1,0 +1,26 @@
+.checkbox-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        margin: 0;
+    }
+}
+
+.checkbox-card.selected {
+    border: 2px solid rgb(120, 224, 120);
+}
+
+#pevious-step {
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+}
+
+.checkbox {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}

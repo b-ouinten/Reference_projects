@@ -1,0 +1,9 @@
+console.log('destroy.js.erb')
+document.getElementById("<%= @cart_item_id %>").remove();
+document.getElementById("total_quantity").innerHTML = '<%= current_user_cart_items_count %>';
+document.getElementById("total_price").innerHTML = '<%=current_user_cart_total %>';
+document.getElementById("items_count").innerHTML = "<%= current_user_cart_items_count %>";
+
+<% if current_user_cart_items_count == 0 %>
+  window.location = '<%= mon_panier_path%>'
+<% end %>

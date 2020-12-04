@@ -1,0 +1,74 @@
+
+<div class="text-secondary p-2 row justify-content-center">
+  <div class="col-md-5">
+    <div class="row p-3 justify-content-left">
+      <h3>MON PROFIL 😼</h3> 
+    </div>  
+    <div class="card profil" style="width: 30rem;">
+      <%if @user.avatar.attached?%>
+        <%= image_tag @user.avatar, style: "width:100%", alt: 'avatar' %>
+      <%else%>
+        <p>=== Photo Profil ===</p>
+      <%end%>        
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"> <%= @user.first_name %> <%= @user.last_name %></li>
+          <li class="list-group-item"> <%= @user.email %> </li>
+       </ul>
+      <div class="card-body">
+       <%if current_user.cart_id != nil %>
+        <a class="card-link" href = "<%= mon_panier_path %>"> Mon panier 🧺 </a>
+       <%else%>
+       <p class="text-muted"> Votre panier est vide !</p>
+       <%end%>
+      </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div class="p-3 mb-5"><%= link_to "Modifier mon mot de passe", edit_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+      </div><br>
+      <div class="p-3 mb-5">  <%= link_to "Éditer mon profil", editer_mon_profil_path, class: "btn btn-sm btn-outline-primary" %>
+      </div>
+   </div>
+</div>
+<br>
+<br>
+  <div class="col-md-4">
+    <h3 class="p-3">Mes achats 🛒</h3>     
+<%if Order.where("user_id = #{current_user.id}").count != 0 %>
+
+      <% Order.where("user_id = #{current_user.id}").each do |x| %>   
+      <div class="card">
+        <div class="card-header bg-dark text-white">COMMANDE N° <%= x.id %>  <small>faite le <%= x.created_at.strftime('%d/%m/%Y à %H:%M') %></small></div>
+           <div class="card-body">
+            <%array = []%> 
+             <% OrderItem.where("order_id = #{x.id}").each do |j| %> 
+             <div class="card-text">
+              <div class="container row justify-content-between">
+                 <p>"<%= Item.find(j.item_id).title%>"</p>
+                 <p> <%= Item.find(j.item_id).price%>€</p></div>
+              </div>
+                   <%array << Item.find(j.item_id).price%> 
+                   <% end %> 
+              </div>
+              <div class="card-footer font-weight-bold" style="height: 3rem;">
+                 <div class="container row justify-content-between">
+                   <p>TOTAL </p>
+                   <p><%=array.inject(0){|sum,j| sum + j }%> €</p>
+                 </div>
+              </div>
+        </div>
+        <br>
+      <% end %>
+     </div>
+  </div>
+  <%else%>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row justify-content-center">
+   <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Tear_From_One_Eye_Cat_Emoji_ios10_large.png?v=1571606090" style="width: 3rem;">
+  </div>
+   <br>
+     <p class="text-center text-muted">Vous n'avez pas encore effectué d'achat</p>
+     <p class="text-center"><%= link_to "Voir les produits", root_path, class: "btn btn-sm btn-outline-primary"  %></p>
+  <% end %>

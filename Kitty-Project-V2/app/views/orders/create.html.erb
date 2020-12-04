@@ -1,0 +1,9 @@
+<div class="container-fluid pt-5">
+  <div class="row mt-5">
+    <div class="col-xs col-md-6 offset-md-3 text-center">
+      <p>Votre commande est bien été validée et le paiement est effectué avec succès</p>
+      <p>Vous recevrez votre commande par mail sur <%= current_user.email %></p>
+      <%= link_to 'Revenir à l\'accueil' , root_path, class: 'btn btn-secondary text-decoration-none' %>
+    </div>
+  </div>
+</div>

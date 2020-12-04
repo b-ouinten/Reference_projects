@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <p>
+      Vous vous êtes inscrit sur Agora en utilisant l'e-mail suivant : <%= @user.email %>.
+    </p>
+    <p>
+      Pour accéder à votre compte, connectez-vous sur <%= link_to "Agora.com", @url %>
+    </p>
+    <p> À très vite sur Agora !</p>
+
+    <p> L'équipe Agora.</p>
+  </body>
+</html>

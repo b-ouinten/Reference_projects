@@ -1,0 +1,43 @@
+$default-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$default-font-size: 16px;
+$mobile-font-size: 15px;
+$main-color: #ffa500; 
+$text-color: black;
+$text-muted-color: #637587;
+$default-border-color: lighten($main-color, 35%);
+$default-background-color: white;
+$font-size: (
+"big": 0,
+"normal": 0.9rem,
+"small": 0.8rem
+);  
+$mobile: 600px;
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin no-outline-on-focus {
+  &:focus {
+    outline: 0;
+  }
+}
+
+@mixin button-style($color) {
+  background-color: $color;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: lighten($main-color, 10%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

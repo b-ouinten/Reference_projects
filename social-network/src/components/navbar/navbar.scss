@@ -1,0 +1,65 @@
+@import 'src/common';
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0.5rem 0 0;
+  max-width: 10rem;
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+
+  @include mobile {
+    max-width: 4rem;
+
+    & span {
+      display: none;
+    }
+  }
+  
+  li {
+    a {
+      display: flex;
+      margin: 0;
+      padding: 14px 15px;
+      background-color: $default-background-color;
+      text-decoration: none;
+      font-weight: bold;
+      color: $text-color;
+      
+      &:not(.logo) {
+        font-size: 1.2rem;
+        border-radius: 30px;
+      }
+      
+      &:not(.logo):hover {
+        color: $main-color;
+        background-color: lighten($main-color, 35%);
+      }
+      
+      &:not(.logo):focus {
+        color: $main-color;
+      }
+
+      &.logo {
+        font-size: 1.7rem;
+        padding: 0 15px 20px;
+
+        & > span {
+          align-self: flex-end;
+          margin-left: 0.3rem;
+        }
+
+        &:hover {
+          & > span {
+            color: $main-color;
+          }
+        }
+      }
+
+      span {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

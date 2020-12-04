@@ -1,0 +1,23 @@
+<tr>
+  <td id='img-<%= x.id %>' class='text-center'>
+    <%if x.picture.attached?%>
+      <%= image_tag x.picture, alt: "image", width: 200, style: 'height: auto;' %>
+    <%else%>
+      <%= image_tag ("home.jpg"), width: 200, style: 'height: auto;' %>
+    <%end%>
+  </td>
+  <td>
+    <h4 class='text-wrap'><%= x.title %></h4>
+    <p class='text-muted text-wrap' style='font-style: italic;'> Il reste : <%= x.lifetime %> jours pour voter</p>
+    <div>
+      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%= x.id %>" role="button">
+        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+      </a>
+      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%= x.id %>" role="button">
+        <i class="material-icons" style="font-size: 15px">mode_comment</i> <%= x.comments.count %>
+      </a>
+      <span class="badge badge-primary"><%= x.category.name %></span>
+    </div>
+  </td>
+  <%= render 'cities/vote_informations', x: x %>
+</tr>

@@ -1,0 +1,291 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 order-md-1"> 
+      <h1>Agissez ensemble pour changer votre ville</h1>
+      <h4 class="text-white">Agora est une plateforme citoyenne vous permettant de proposer et de partager des initiatives locales</h4>
+      <% if user_signed_in? %>
+      <p><%= link_to 'Proposer mon idée', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      <%else%>
+      <p><a class="btn btn-primary btn-lg" href="/users/sign_in" role="button">Proposer mon idée</a></p>
+      <%end%>
+    </div>
+    <div class="col-md-6 order-md-2 img-top">
+      <%= image_tag("share.svg", style: "width:100%") %>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="container">
+  <h2 class="text-center"><b>Comment ça marche ?</b></h2>
+  <br><br> 
+  <div class="row featurette">
+    <div class="col-md-7 order-md-1">
+      <h2 class="featurette-heading">Proposez <i class="material-icons idea-icon" style="font-size: 33px">wb_incandescent</i></h2>
+      <h5>Une idée vous inspire depuis longtemps ? Sur Agora, vous êtes libres de la montrer à vos concitoyens. Nous veillons à ce que les propositions les plus pertinentes soient présentées.</h5>
+    </div>
+    <div class="col-md-5 order-md-1 img-center">
+      <%= image_tag("idea.svg", style: "width:65%;") %>
+    </div>
+  </div>
+  <br><br>
+  <div class="row featurette">
+    <div class="col-md-5 col-lg-7 col-lg-push-5  ">
+      <h2 class="featurette-heading">Votez  <i class="material-icons vote-icon" style="font-size: 33px">how_to_vote</i>
+        <h5>Chaque jour, des citoyens comme vous réfléchissent à comment améliorer le quotidien de votre ville. Consultez et débattez des propositions ensemble !</h5>
+    </div>
+    <div class="col-md-7 col-lg-5 col-lg-pull-7 img-center">
+          <%= image_tag("voting.svg", style: "width:65%") %>
+      </div>    
+    </div>
+    <br><br>
+    <div class="row featurette">
+      <div class="col-md-7 order-md-1">
+        <h2 class="featurette-heading">Agissez  <i class="material-icons group-icon" style="font-size: 33px">people</i></h2>
+        <h5>Sur Agora, le système de vote permet de faire ressortir les meilleures propositions. Quand l'idée a reçu assez de votes positifs, nos équipes vous mettent en relation avec les citoyens soutenant votre projet. </h5>
+      </div>
+      <div class="col-md-5 order-md-2 img-center">
+        <%= image_tag("group.svg", style: "width:70%") %>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <h2 class="text-center"><b>Et après ?</b></h2>
+<div class="container">
+    <ul class="timeline">
+        <li>
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">people</i></div>
+          <div class="timeline-panel ">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Rassemblez-vous !</h4>
+            </div>
+            <div class="timeline-body">
+              <h5>Le grand moment est arrivé ! À partir de 5 votes positifs, votre proposition est validée et nous vous mettons en relation avec toux ceux qui ont soutenu votre projet.</h5>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">add</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Créez votre association</h4>
+            </div>
+            <div class="timeline-body">
+              <h5>Selon la taille de votre projet, vous aurez besoin de créer une association à but non-lucratif.</h5>            
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">create</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Montez votre dossier</h4>
+            </div>
+            <div class="timeline-body">
+              <h5>Pour être prise en compte par la mairie, votre projet devra être présenté sous forme de dossier.</h5>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">grade</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Rendez le monde meilleur </h4>
+            </div>
+            <div class="timeline-body">
+              <h5>Votre idée a amélioré le quotidien de vos concitoyens et rendu votre ville encore plus belle. Bravo ! </h5>
+            </div>
+          </div>
+        </li>
+    </ul>
+</div>
+<br><br>
+<h2 class="text-center"><b>Ils parlent de nous</b></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-testimonial box zoom">
+        <div class="icon">
+          <i class="material-icons">format_quote</i>
+        </div>
+        <div class="card-content">
+          <h5 class="card-description">
+            Ce site est tout simplement génial ! Grâce à lui j'ai pu proposer mon idée et j'ai rencontré des citoyens soucieux de changer les choses. Encore merci à toute l'équipe d'Agora !
+          </h5>
+        </div>
+        <div class="footer">
+          <h4 class="card-title">Julien Jacquet</h4>
+          <h6 class="category">@jjacquet</h6>
+          <div class="card-avatar">
+            <%= image_tag("julien.jpg", style: "width: 100%;height: auto") %>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="col-md-4"> 
+      <div class="card card-testimonial box zoom">
+        <div class="icon">
+          <i class="material-icons">format_quote</i>
+        </div>
+        <div class="card-content">
+          <h5 class="card-description">
+            Agora c'est la démocratie 2.0 ! On peut échanger, débattre et agir entre citoyens pour améliorer sa ville. Le site est très agréable à prendre en main et l'équipe est très réactive ! 
+          </h5>
+        </div>
+        <div class="footer">
+          <h4 class="card-title">Alexis Bernard</h4>
+          <h6 class="category">@alexisbernard</h6>
+          <div class="card-avatar">
+            <%= image_tag("alexis.jpg", style: "width: 100%;height: auto") %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"> 
+      <div class="card card-testimonial box zoom">
+        <div class="icon">
+          <i class="material-icons">format_quote</i>
+        </div>
+        <div class="card-content">
+          <h5 class="card-description">
+            Avec Agora, j'ai trouvé des citoyens motivés et prêts à m'aider à réaliser mon projet ! J'ai pû débattre et agir avec eux pour améliorer ma ville. Merci Agora pour votre aide !
+          </h5>
+        </div>         
+          <div class="footer">
+            <h4 class="card-title">Marie Brun</h4>
+            <h6 class="category">@mariebrun</h6>
+          <div class="card-avatar">
+            <%= image_tag("marie.jpg", style: "width: 100%;height: auto") %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<br><br><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h3 class="display-4 text-white"><b>Faites porter votre voix et changez votre ville !</b></h3>
+      <h4 class="text-white"> Une idée inspirante ? Rendez la possible avec Agora !</h4>
+      <% if user_signed_in? %>
+      <p><%= link_to 'Proposer mon idée', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      <%else%>
+      <p><a class="btn btn-primary btn-lg" href="/users/sign_in" role="button">Proposer mon idée</a></p>
+      <%end%>
+    </div>
+    <div class="col-md-5 img-group">
+      <%= image_tag("community.svg", style: "width:90%") %>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<br>
+<div class = "container">
+  <h2 class="text-center"><b>Les meilleures propositions du moment</b></h2>
+  <div class="col-md-6">
+    <h3 class="text-center"><b>Paris</b></h3>
+    <div class="card box">
+      <div class="card-content">
+      <div class="table-responsive">
+        <table class="table datatables-s text-wrap" cellspacing="0" width="100%" style="width:100%">
+          <thead>
+            <tr>
+              <th class="disabled-sorting"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@proposal_paris.each do |x|%>
+            <tr>
+              <td>
+                <%if x.picture.attached?%>
+                  <%= image_tag x.picture, alt: "Card image", width: 200, style: "height: auto" %>
+                <%else%>
+                  <%= image_tag("home.jpg", width: 200, style: "height: auto")%>
+                <%end%>
+              </td>
+              <td>
+                <p class="text-wrap"><%= x.title %></p>
+                <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
+                  <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                </a>
+                <span class="badge"><%= x.category.name %></span>
+                </p>
+              </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3 class="text-center"><b>Lyon</b></h3>
+    <div class="card box">
+      <div class="card-content">
+      <div class="table-responsive">
+        <table class="table datatables-s text-wrap" cellspacing="0" width="100%" style="width:100%">
+          <thead>
+            <tr>
+              <th class="disabled-sorting"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@proposal_lyon.each do |x|%>
+            <tr>
+              <td>
+                <%if x.picture.attached?%>
+                <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
+                <%else%>
+                  <%= image_tag("home.jpg", width: 170, style: "height: auto")%>
+                <%end%>                  
+              </td>
+              <td>
+                <p class='text-wrap'><%= x.title %></p>
+                <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                  <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                </a>
+                <span class="badge badge-primary"><%= x.category.name %></span>
+              </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora ! N'hésitez pas à les consulter !</b></h3>
+      <div class="dropdown">
+        <button href="#" class="btn dropdown-toggle btn-primary btn-lg" data-toggle="dropdown" aria-expanded="true" >
+          <i class="material-icons">home</i>  Les villes disponibles
+          <b class="caret"></b>
+        </button>
+        <ul class="dropdown-menu">
+          <% City.all.each do |x| %>
+            <li><a href="cities/<%=x.id %>"><%= x.name %></a></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6 img-bottom">
+      <%= image_tag("town.svg", style: "width:70%") %>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+<div class = "container text-center">
+  <h4 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'où vous venez !</b></h4>
+  <p><a class="btn btn-primary " href="mailto: zeagoraproject@gmail.com" role="button"><i class="material-icons">mail</i>   Nous contacter</a></p>
+</div>
+</div>
+</div>

@@ -1,0 +1,77 @@
+@import 'src/common';
+
+.post {
+  border-bottom: 1px $default-border-color solid;
+
+  &:hover {
+    background-color: lighten($color: $main-color, $amount: 40%);
+  }
+  
+  .container {
+    margin: 0;
+    padding: 0 0 1rem 0;
+    display: flex;
+    
+    p.text {
+      margin: 0;
+      font-size: map-get($map: $font-size, $key: normal);
+      word-wrap: break-word;
+    }
+
+    .img-container {
+      margin: 0;
+      padding: 0;
+      
+      img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border-radius: 50%;
+      }
+    }
+
+    .header {
+      margin: 0;
+      padding: 7px 0;
+      
+      a {
+        margin: 0;
+        text-decoration: none;
+        color: $text-color;
+        font-weight: bold;
+
+        &:hover {
+          color: $text-color;
+        }
+      }
+
+      & > span {
+        color: $text-muted-color;
+        font-size: map-get($map: $font-size, $key: small);
+      }
+    }
+  }
+
+  .like-delete {
+    display: flex;
+    justify-content: center;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      & > div {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 15px;
+          color: $text-muted-color;
+        }
+      }
+      
+    }
+  }
+}

@@ -1,0 +1,49 @@
+$(document).ready(function() {
+  proposalId = <%= @proposal.id %>;
+  <% if params[:city_id]  %>
+    delVoteBtn = $('div#btns-' + proposalId + '> a');
+    addVoteBtn = '<%= j render 'cities/add_vote_btn', x: @proposal %>';
+    delVoteBtn.replaceWith(addVoteBtn);
+
+    votesCountTag = $('div#lbls-votes-conut-' + proposalId);
+    votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
+
+    $('td#img-' + proposalId).unbind();
+    $('td#img-' + proposalId).click(() => {
+      window.setTimeout(function(){
+        btnsVoteContainer = $('td.child div#btns-' + proposalId);
+        btnsVoteContainer.empty();
+        btnsVoteContainer.append(addVoteBtn);
+      }, 0);
+    });
+  <% else %>
+    delVoteBtn = $('a#del-vote-btn');
+    delVoteBtn.html('Je vote');
+    delVoteBtn.removeClass('btn-success');
+    delVoteBtn.addClass('btn-primary');
+    delVoteBtn.attr('id', 'add-vote-btn');
+    delVoteBtn.attr('data-method', 'post');
+    delVoteBtn.prepend('<i class="material-icons" style="font-size: 19px">how_to_vote</i> ');
+    delVoteBtn.attr('href', '/proposals/' + proposalId + '/votes/');
+    votesCountTag = $('h6#votes-count');
+    proposalVotesCount = <%= @proposal.votes_count %>;
+    if (proposalVotesCount > 1) {
+      votesCountTag.html(proposalVotesCount + ' VOTES');
+    } else {
+      votesCountTag.html(proposalVotesCount + ' VOTE');
+    }
+    proposalClassification = $('div#classification');
+    proposalClassification.empty();
+    proposalClassification.append('<%= j render 'proposals/classifications', proposal: @proposal %>');
+  <% end %>
+  currentUserVoteTokensAfterVote = <%= current_user_vote_tokens %>
+
+  if (currentUserVoteTokensAfterVote == 0) {
+    message = 'Il ne vous reste aucun jeton de vote !'
+  } else if (currentUserVoteTokensAfterVote == 1)
+    message = 'Il vous reste un dernier jeton de vote !'
+  else {
+    message = `Il vous reste encore ${currentUserVoteTokensAfterVote} jetons de vote !` 
+  }
+  swal({ title:"Vote retiré !", text: "Vous récupérez un jeton ! Utilisez-le à bon escient en votant pour des idées pertinentes et inspirantes. " + message, type: "warning", buttonsStyling: false, confirmButtonClass: "btn btn-warning"});
+});

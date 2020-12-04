@@ -1,0 +1,29 @@
+<tr>
+  <td>
+    <%if x.picture.attached?%>
+      <%= image_tag x.picture, alt: "image", width: 200, style: 'height: auto;' %>
+    <%else%>
+      <%= image_tag ("home.jpg"), width: 200, style: 'height: auto;' %>
+    <%end%>
+  </td>
+  <td>
+    <h4 class='text-wrap'><%=x.title %></h4>
+    <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+      <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+    </a>
+    <span class="badge badge-primary"><%= x.category.name %></span>
+  </td>
+  <td>
+    <%if x.is_expired? %>
+      <div class="alert alert-warning">
+        <p class="text-center">Expirée</p>
+      </div>   
+      <p class="text-muted text-center text-wrap">Cette proposition a atteint la date d'expiration</p>    
+    <%elsif x.votes_count >= 3%> 
+      <div class="alert alert-info">
+        <p class="text-center">Validée</p>
+      </div>
+      <p class="text-muted text-center text-wrap">Cette proposition a atteint les 5 votes !</p> 
+    <%end%>
+  </td>
+</tr>

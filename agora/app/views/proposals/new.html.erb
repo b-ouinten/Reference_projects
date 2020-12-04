@@ -1,0 +1,66 @@
+<br>
+<div class = container>
+  <div class="col-md-12">
+    <div class="card box">
+      <%= form_for @proposal do |f| %>
+        <div class="card-header card-header-text" data-background-color="blue">
+          <h4 class="card-title">Proposez une initiative à <%= current_user.city.name %></h4>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <label class="col-sm-1 label-on-left"></label>
+            <div class="col-sm-9">
+              <div class="form-group label-floating">
+                <%= f.label :title, "Donnez un titre à votre proposition. *" %>   
+                <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-1 label-on-left"></label>
+            <div class="col-sm-9">
+              <div class="form-group label-floating">
+                <%= f.label :purpose, "Pourquoi souhaitez vous lancer cette initiative ? A quel problème souhaitez-vous répondre ? *" %>  
+                <%= f.text_area :purpose, rows: 2, autofocus: true, autocomplete: "purpose", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-1 label-on-left"></label>
+            <div class="col-sm-9">
+              <div class="form-group label-floating">
+                <%= f.label :category_id, "Choisissez votre categorie. *" %>
+                <%= collection_select(:proposal, :category_id, Category.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"}) %> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-1 label-on-left"></label>
+            <div class="col-sm-9">
+              <div class="form-group label-floating">
+                <%= f.label :description, "Expliquez votre proposition ! N'hésitez pas à donner des détails. *" %>  
+                <%= f.text_area :description, rows: 5, autofocus: true, autocomplete: "description", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-1 label-on-left"></label>
+            <div class="col-sm-3">
+              <div class="label-floating">
+                <%= f.label :picture, "Associez une belle image à ta proposition. *" %>  
+              </div>
+              <%= f.file_field :picture, class: "btn btn-sm btn-primary btn-round"%>
+            </div>
+            <div class='col-sm-6'>
+              <img id = 'picture' class="my-img" src="" alt="">
+            </div>
+          </div>
+          <br>
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-primary btn-fill">Créer Proposition</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

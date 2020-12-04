@@ -1,0 +1,14 @@
+.navbar {
+  background-color: rgb(0, 0, 8);
+}
+
+.font-text {
+  font-size: 50px;
+}
+
+.banner
+{
+  background-image: url(https://images.unsplash.com/photo-1581538112764-26a369ba31b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80); 
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}

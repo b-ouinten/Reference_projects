@@ -1,0 +1,30 @@
+<div id='items_container' class="container-fluid mt-4">
+  <div class="row justify-content-center">
+    <%items.sort_by{|obj| obj.id}.each do |x|%>
+      <div class="col-auto mb-4">
+        <div class="card mb-4">
+          <h3 class="card-header"> Photo nº<%=x.id%></h3>
+          <%if x.image.attached?%>
+            <%= image_tag x.image, alt: "Card image", width: 325, height: 210 %>
+          <%else%>
+            <p>=== Image ===</p>
+          <%end%>
+          <div class="card-body">
+            <p class = "card-text"><%=x.title%></p>
+            <p class="card-text">Prix de la photo: <%=x.price%> euros</p>
+            <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
+          </div>
+          
+          <div class="card-body">
+            <a href="items/<%=x.id%>" class="card-link">Accéder à la fiche <a>
+            <% if user_signed_in? %>
+              <%= link_to 'Ajouter au panier', item_cart_items_path(x.id), class:"btn btn-secondary btn-sm border border-secondary", method: :post, remote: true %>
+            <% else %>
+              <%= link_to 'Ajouter au panier', item_cart_items_path(x.id), class:"btn btn-secondary btn-sm border border-secondary", method: :post, remote: false %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+</div>

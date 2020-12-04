@@ -1,0 +1,27 @@
+@import 'src/common';
+
+.social-network {
+  margin: 0 1rem;
+  
+  div.website-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 10.5rem;
+    padding: 0;
+    
+    @include mobile {
+      flex-direction: column;
+      margin-left: 4.5rem;
+    }
+    
+    .pagesContainer {
+      flex: 6;
+    }
+    
+    .news {
+      flex: 4;
+      padding: 1rem 0 1rem 1rem;;
+    }
+  }
+}

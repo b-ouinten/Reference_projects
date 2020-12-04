@@ -1,0 +1,77 @@
+<div class="jumbotron alert alert-info mt-3">
+  <% if logged? && is_gossip_author?(@gossip) %>
+    <div class="d-flex flex-row justify-content-center">
+      <%= link_to "Edit", edit_gossip_path(@gossip.id), class: "btn btn-warning btn-sm mr-2", style: "text-decoration: none" %>
+      <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger btn-sm ml-2" style="text-decoration: none" data-confirm="Are you sure !" data-method="DELETE">
+        Delete
+      </a>
+    </div>
+  <% end %>
+
+  <h1 class="text-uppercase font-weight-bold"><%= @gossip.title %></h1>
+  <p class="lead"><%= @gossip.content %></p>
+  <hr class="my-4">
+  <p class="mb-3"><span class="h4 font-weight-bold"><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></span> <span class="h6">from</span> <a href="<%= city_path(@gossip.user.city.id) %>" class="badge badge-danger" style="text-decoration: none"><%= @gossip.user.city.name %></a></p>
+  <p class="h6"><span class="font-weight-bold">Email : </span><%= @gossip.user.email %></p>
+  <p class="h6"><span class="font-weight-bold">Age : </span><%= @gossip.user.age %> years</p>
+  <p class="h6"><span class="font-weight-bold">Description : </span><%= @gossip.user.description %></p>
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <%= link_to "Show author details", user_path(@gossip.user.id), class: "btn btn-primary btn-md mt-2", style: "text-decoration: none"%>
+    <div class="d-flex flex-row justify-content-between align-items-center" style="width: 75px">
+      <div class="badge badge-primary h-50" style="width: 25px"><%= @gossip.likes.count %></div>
+      <!--<%= link_to "Like", gossip_likes_path(@gossip.id), method: 'post', class: 'badge badge-warning' %>-->
+      <% if logged? %>
+        <% if !@gossip.like_of(current_user) %>
+          <%= form_for Like.new, url: gossip_likes_path(@gossip) do |f| %>
+            <input type="hidden" name="gossip_id" value=<%= @gossip.id %> >
+            <button type="submit" class="btn btn-warning badge badge-warning">Like</button>
+          <% end %>
+        <% else %>
+          <%= form_for @like, url: gossip_like_path(@gossip.id, @gossip.like_of(current_user).id), method: :delete do |f| %>
+            <button type="submit" class="btn btn-danger badge badge-danger">Unlike</button>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @gossip.comments.count != 0 %>
+  <div class="card">
+    <div class="card-header alert alert-info h5 mb-0">
+      These are all the comments for this gossip :
+    </div>
+    <ul class="list-group list-group-flush">
+      <% @gossip.comments.each do |comment| %>
+        <li class="list-group-item py-0 d-flex flex-row justify-content-between align-items-center">
+          <div class="mt-3">
+            <p class="text-card"><%= comment.content %></p>
+            <p class="text-card">by : <span class="text-danger font-weight-bold"><%= comment.user.first_name %> <%= comment.user.last_name %></span></p>
+          </div>
+          <% if !logged? || is_comment_author?(comment) %>
+            <div>
+              <a class="btn btn-warning btn-sm" href=<%= edit_gossip_comment_path(@gossip.id, comment.id) %>>Manage</a>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container-fluid mt-3">
+  <%= form_tag gossip_comments_path(@gossip.id) do %>
+    <div class="row">
+      <div class="col-xs col-md-6">
+        <div class="form-group">
+          <div>
+            <%= label_tag 'content', "You can make some comments here !", class: "col-form-label" %>
+            <%= text_area_tag 'content', @comment.content, rows: 3, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= submit_tag "Add Comment", class: "btn btn-info btn-sm"%>
+  <% end %>
+</div>
+

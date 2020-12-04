@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.first_name %> !</h1>
+      <p>
+        Cet email vous informe que votre proposition a été validée par la communauté. Vous pouvez toujours vous rendre sur <%= link_to "Agora.com", @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
+      </p>
+       <p>Voici des liens utiles qui vous aideront à mettre en place votre projet :</p>
+       <%= link_to "- Comment mettre en place une démocratie participative", @url1 %> 
+       <br>
+       <%= link_to "- Les démarches de participation citoyenne", @url2 %> 
+       <br>
+       <%= link_to "- Monter un projet", @url3 %> 
+       <br>
+        <%= link_to "- Qu'est-ce qu'un projet citoyen?", @url4 %> 
+       <br>
+        <%= link_to "- Budget participatif", @url4 %> 
+       <br>
+        <%= link_to "- Modalités de participation des citoyens aux décisions locales", @url5 %> 
+       <br>
+        <%= link_to "- Exemple de dossier à monter", @url6 %> 
+       <br>
+       <br>
+       <br>
+     
+
+      <br>
+        Nous vous envoyons en pièce jointe la liste des citoyens ayant soutenus votre proposition. N'hésitez pas à prendre contact avec eux rapidement !
+      </p>
+       
+    <br>
+      <p>
+        Encore bravo pour votre super idée et à très vite sur Agora !
+      </p>
+    <p> L'équipe Agora. <p> 
+  </body>
+</html>

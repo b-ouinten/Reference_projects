@@ -1,0 +1,10 @@
+$(document).ready(function() {
+  commentToDeleteId = <%= @id %>;
+  <% unless params[:comment_id] %>
+    proposalComment = $('tr#' + commentToDeleteId);
+    proposalComment.remove();
+  <% else %>
+    proposalCommentComment = $('div#' + commentToDeleteId);
+    proposalCommentComment.remove();
+  <% end %>
+});

@@ -1,0 +1,24 @@
+@import 'src/common';
+
+.profile {
+  margin: auto;
+  padding: 1rem;
+  max-width: 30rem;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .email {
+    margin: 0;
+    padding: 0;
+    color: $text-muted-color;
+    font-size: map-get($map: $font-size, $key: small);
+  }
+  
+  .description {
+    font-size: map-get($map: $font-size, $key: normal);
+  }
+}

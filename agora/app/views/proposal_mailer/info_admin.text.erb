@@ -1,0 +1,27 @@
+Récap de la proposition n° <%= @proposal.id %> 
+==========================================================
+ 
+Proposition postée par <%= @user.first_name %> <%= @user.last_name %> le <%= @proposal.created_at %>
+
+
+ID : 
+<%= @proposal.id %>
+
+Titre :
+<%= @proposal.title %>
+
+Objectif : 
+<%= @proposal.purpose %>
+
+Description : 
+<%= @proposal.description %>
+
+Ville :
+<%= @city.name %>
+
+Catégorie :
+<%= @category.name %>
+ 
+ 
+<%= @url %>
+ 

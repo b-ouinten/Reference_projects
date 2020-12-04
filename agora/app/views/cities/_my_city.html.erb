@@ -1,0 +1,75 @@
+<br>
+<div id=<%= city.id %> class="my-city container">
+  <% if proposals.count == 0 %>
+    <div class='no-proposal'>
+      <h3><b>Personne n'a posté de proposition à <%= city.name %> pour le moment.  Change ça en cliquant sur le bouton :</b></h3>
+      <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+    </div>
+  <%else%>
+    <% if ongoing_proposals.count == 0 %>
+      <div class='no-proposal'>
+        <h3><b> Aucune proposition en cours à <%= city.name %>. Change ça en cliquant sur le bouton : </b></h3>
+        <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      </div>
+    <% else %>
+      <h3><b>Les propositions en cours : votez pour vos propositions préférées !</b></h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card box">
+            <div class="card-content">
+              <div class="table-responsive">
+                <table class="table datatables-fn text-wrap" cellspacing="0" width="100%" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="disabled-sorting"></th>
+                      <th></th>
+                      <th class="disabled-sorting"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% ongoing_proposals.each do |x| %>
+                      <%= render 'cities/ongoing_proposal', x: x %>
+                    <%end%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if completed_proposals.count == 0 %>
+      <div class='no-proposal'>
+        <h3><b>Pas de proposition terminée à <%= city.name %> pour le moment. </b></h3>
+        <br><br>
+      </div>
+    <%else%>
+      <h3><b>Les propositions terminées :</b></h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card box">
+            <div class="card-content">
+              <div class="table-responsive">
+                <table class="table datatables-fn text-wrap" cellspacing="0" width="100%" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="disabled-sorting"></th>
+                      <th></th>
+                      <th class="disabled-sorting"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% completed_proposals.each do |x| %>
+                      <%= render 'cities/completed_proposal', x: x %>
+                    <%end%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>

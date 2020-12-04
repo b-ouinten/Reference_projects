@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyTipsAndTricks</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap CSS -->
+    <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> %>
+    <%= stylesheet_link_tag 'bootstrap' %>
+
+  </head>
+
+  <body class="bg-light">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark py-2 d-flex flex-row align-items-center">
+        <a class="navbar-brand align-middle h3 p-0 font-weight-bold" href=<%= root_path %>>My Tips And Tricks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto w-100 d-flex justify-content-between align-items-center">
+            <div class="nav-item d-flex flex-row justify-content-center">
+              <a class="nav-link ml-1 mr-2" href="<%= team_path %>">Team<span class="sr-only">(current)</span></a>
+              <a class="nav-link ml-2" href="<%= contact_path %>">Contact<span class="sr-only">(current)</span></a>
+            </div>
+            <div class="nav-item">
+              <% if !logged? %>
+                <div class="dropdown show">
+                  <button class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sign up / Login
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href=<%= new_user_path %>>Sign up</a>
+                    <a class="dropdown-item" href=<%= new_session_path %>>Login</a>
+                  </div>
+                </div>
+              <% else %>  
+                <%= link_to "Logout", session_path(session.id), method: :delete, class: "btn btn-danger", style: "width: 130px; height: 35px" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <% if logged? %>
+      <div class="mt-2 mr-3">
+        <p class="h6 text-right">You are connected as <%= current_user.first_name %> <%= current_user.last_name %></p>
+      </div>
+    <% end %>
+
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type %> mt-1 py-1"><%= msg %></div>
+    <% end %>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <%= yield %>
+  </body>
+</html>

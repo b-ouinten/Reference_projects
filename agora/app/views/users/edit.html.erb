@@ -1,0 +1,86 @@
+<br>
+<br> 
+<div class="container">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card-content">
+      <div class="text-center">
+        <div class="alert alert-info">
+          <span><h4>Mon profil</h4></span>
+        </div>
+      </div>
+    </div>
+    <div class="card box">
+      <div class="card-header card-header-icon" data-background-color="blue">
+        <i class="material-icons">perm_identity</i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Editer mon profil</h4>
+        <%= form_for(current_user, html: { method: :put, class: "form-horizontal" }) do |f| %>
+        <div class="row">
+          <label class="col-md-3 label-on-left"><%= f.label :first_name, "Prénom" %></label>                                              
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-md-3 label-on-left"> <%= f.label :last_name, "Nom" %></label>                                              
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-md-3 label-on-left">  <%= f.label :city, "Ville" %></label>                                            
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"} %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-md-3"></label>
+          <div class="col-md-9">
+            <div class="actions">
+              <%= f.submit "Modifier mon profil", class: "btn btn-primary" %>
+            </div> 
+          </div>
+        </div>
+        <% end %>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card box">
+      <div class="card-header card-header-icon" data-background-color="blue">
+        <i class="material-icons">photo</i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Changer ma photo de profil</h4>
+        <%= form_tag user_avatars_path(@user), multipart: true do %> 
+        <%= file_field_tag :avatar, class: "btn btn-sm btn-primary btn-round"%>
+        <div class="text-center">
+          <%= submit_tag "Mettre à jour", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <div class="col-md-3"></div>      
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= link_to "Retour", :back, class: "text-info" %></p>
+    </div>
+  </div>
+</div>
+<br>
+<br>

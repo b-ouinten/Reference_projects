@@ -1,0 +1,11 @@
+<div id='proposal-comments-container' class="row">
+  <div class="col">
+    <table class="table table-responsive text-wrap">
+      <tbody id='proposal-comments'>
+        <% comments.each do |x| %>
+          <%= render 'proposals/proposal_comment', x: x, proposal: proposal %>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

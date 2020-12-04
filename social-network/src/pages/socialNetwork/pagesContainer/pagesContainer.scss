@@ -1,0 +1,26 @@
+@import 'src/common';
+
+.pagesContainer {
+  padding : 0;
+  border: 1px $default-border-color solid;
+  border-top: none;
+
+  h3 {
+    color: $text-color;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  hr {
+    margin: 0;
+    border-width: 0;
+    height: 1px;
+    color: $default-border-color;
+    background-color: $default-border-color;
+  }
+
+  .page {
+    margin: 0;
+    padding: 0;
+  }
+}

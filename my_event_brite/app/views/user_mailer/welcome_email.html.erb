@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.first_name %> <%= @user.last_name %> and welcome in our website !</h1>
+    <p>
+      You are registred on my-event-brite.herokuapp.com using the following email : <%= @user.email %>.
+    </p>
+    <p>
+      To access your customr area, log in via : <%= @url %>.
+    </p>
+    <p> See you soon on <a href="my-event-brite.herokuapp.com">our website</a>
+  </body>
+</html>

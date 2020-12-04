@@ -1,0 +1,62 @@
+$(document).ready(function() {
+  <% if @current_user_vote_tokens_before_vote > 0 %>
+    <% if @vote.save %>
+      proposalId = <%= @proposal.id %>;
+      <% if params[:city_id] %>
+        <% if @proposal.votes_count < 5 %>
+          addVoteBtn = $('div#btns-' + proposalId + '> a');
+          delVoteBtn = '<%= j render 'cities/del_vote_btn', x: @proposal %>';
+          addVoteBtn.replaceWith(delVoteBtn);
+          
+          votesCountTag = $('div#lbls-votes-conut-' + proposalId);
+          votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
+
+          $('td#img-' + proposalId).unbind();
+          $('td#img-' + proposalId).click(() => {
+            window.setTimeout(function(){
+              btnsVoteContainer = $('td.child div#btns-' + proposalId);
+              btnsVoteContainer.empty();
+              btnsVoteContainer.append(delVoteBtn);
+            }, 0);
+          });
+        <% else %>
+          window.location = '<%= city_path @city %>'
+        <% end %>
+      <% else %>
+        addVoteBtn = $('a#add-vote-btn');
+        addVoteBtn.html('A voté !');
+        addVoteBtn.removeClass('btn-primary');
+        addVoteBtn.addClass('btn-success');
+        addVoteBtn.attr('id', 'del-vote-btn');
+        addVoteBtn.attr('data-method', 'delete');
+        addVoteBtn.prepend('<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> ');
+        currentUserProposalVoteId = <%= @proposal.vote_of(current_user).id %>;
+        addVoteBtn.attr('href', '/proposals/' + proposalId + '/votes/' + currentUserProposalVoteId);
+        votesCountTag = $('h6#votes-count');
+        proposalVotesCount = <%= @proposal.votes_count %>;
+        if (proposalVotesCount > 1) {
+          votesCountTag.html(proposalVotesCount + ' VOTES');
+        } else {
+          votesCountTag.html(proposalVotesCount + ' VOTE');
+        }
+        proposalClassification = $('div#classification');
+        proposalClassification.empty();
+        proposalClassification.append('<%= j render 'proposals/classifications', proposal: @proposal %>');
+      <% end %>
+      currentUserVoteTokensAfterVote = <%= current_user_vote_tokens %>
+      
+      if (currentUserVoteTokensAfterVote == 0) {
+        message = 'Il ne vous reste aucun jeton de vote !'
+      } else if (currentUserVoteTokensAfterVote == 1)
+        message = 'Il vous reste un dernier jeton de vote !'
+      else {
+        message = `Il vous reste encore ${currentUserVoteTokensAfterVote} jetons de vote !` 
+      }
+      swal({ title:"Vote pris en compte !", text: "Merci pour votre collaboration ! En votant pour des propositions vous contribuez à l'amélioration de votre ville et de la vie de vos concitoyens. " + message, type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"})
+    <% else %>
+      alert('<%= @vote.errors.full_messages.to_sentence %>')
+    <% end %>
+  <% else %>
+    swal({ title:"Plus aucun jeton de vote !", text: "Désolé ! Vous n'avez aucun jeton de vote pour le moment, attendez le prochain renouvellement le <%= current_user_next_renewal_of_vote_tokens_date.strftime('%d/%m/%Y à %H:%M') %> ou dévotez pour des propositions qui vous semblent moins pertinentes !", type: "error", buttonsStyling: false, confirmButtonClass: "btn btn-danger"})
+  <% end %>
+});

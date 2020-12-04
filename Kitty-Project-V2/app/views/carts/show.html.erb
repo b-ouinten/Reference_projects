@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<div class="container center_div">
+<% if @item_list.count != 0 %>
+  <div id="recap" class="texte-bienvenue text-center">
+    <br>
+    <h2>Voici un récapitulatif de vos commandes</h2>
+    <br>
+  </div>
+  <table class="table table-hover">
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">PHOTO</th>
+      <td>Titre</td>
+      <td>Quantité</td>
+      <td>Prix</td>
+      <td></td>
+    </tr>
+    <% @item_list.each do |x| %>
+      <tr id='<%= x.id %>'>
+        <%if Item.find(x.item_id).image.attached?%>
+          <th scope="row"><%= image_tag Item.find(x.item_id).image, alt: "Card image", width: 120, height: 80 %></th>
+        <%else%>
+          <th scope="row"><p>=== Image ===</p></th>
+        <%end%>
+        <td><%=Item.find(x.item_id).title%></td>
+        <td>1</td>
+        <td><%=Item.find(x.item_id).price%>€</td>
+        <td><%= link_to "Supprimer", cart_item_path(x.id), method: 'delete', :class => "btn btn-danger btn-sm", remote: true %></td>
+      </tr>
+    <%end%>
+    <tr class="table-primary">
+      <th scope="row">TOTAL</th>
+      <td></td>
+      <td id="total_quantity" ><%=@item_list.count%></td>
+      <td id="total_price"><%=@total%>€</td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+   <br>
+  <%= link_to 'Revenir à l\'accueil', root_path, class: 'btn btn-secondary text-decoration-none' %>
+  <%= link_to "Passer Commande", new_order_path, :class => "btn btn-primary text-decoration-none" %>
+  <br>
+<%else%>
+
+<div id="empty_img" class="texte-bienvenue text-center">
+    <br>
+    <h2>Vous n'avez aucun produit dans votre panier!</h2> <br>
+    <img src = https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 style="height: 500px;" >
+    <br>
+    <br>
+  <a class="btn btn-secondary text-decoration-none" href="/">Revenir à l'accueil</a>
+    <br>
+    <br>
+  </div>
+<%end%>
+</div>
+
+ 
+  
+
+</html>

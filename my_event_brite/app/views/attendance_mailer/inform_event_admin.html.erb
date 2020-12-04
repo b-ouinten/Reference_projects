@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @event_admin.first_name %> <%= @event_admin.last_name %>, congratulations !</h1>
+    <p>
+      This user : <%= @participant.first_name %> <%= @participant.last_name %> with email : <%= @participant.email %> has just registered to your event. Say hi !
+    </p>
+    <p>
+      To access your customer area, log in via : <%= @url %>.
+    </p>
+    <p> See you soon on <a href="my-event-brite.herokuapp.com">our website.</a>
+  </body>
+</html>

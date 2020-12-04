@@ -1,0 +1,45 @@
+@import 'src/common';
+
+.auth {
+  .container {
+    padding: 16px;
+    margin: auto;
+    padding: 1rem;
+    max-width: 30rem;
+    
+    .warning {
+      margin-bottom: 1rem;
+      padding: 12px;
+      color: white;
+      background-color: #ff6361;
+      
+      & > p {
+        margin: 0;
+        font-size: map-get($map: $font-size, $key: small);
+      }
+    }
+    
+    label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      
+      input {
+        display: inline-block;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        
+        @include no-outline-on-focus;
+      }
+    }
+    
+    button {
+      width: 100%;
+      margin: 8px 0;
+      
+      @include button-style($main-color);
+    }
+  }
+}

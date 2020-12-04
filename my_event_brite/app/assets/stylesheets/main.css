@@ -1,0 +1,32 @@
+.user-pretty-border
+{
+  border: 5px #00afd8 solid;
+}
+
+.event-pretty-border
+{
+  border: 5px #f6b140 solid;
+}
+
+.attendances-pretty-border
+{
+  border: 5px #1cc75d solid;
+}
+
+.box-shadow
+{
+  box-shadow: 0px 2px 6px 1px rgba(32, 33, 36, 0.28);
+}
+
+.img-circular
+{
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+}
+
+p
+{
+  word-wrap: break-word;
+}

@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row mt-4">
+    <div class="col">
+        <h2>Photo : <%= @item.title %></h2>
+    </div>
+</div>
+</div>
+<div class="container">
+  <div class="row align-items-center">
+    <br>
+    <div class="col-7">
+      <%if @item.image.attached?%>
+        <%= image_tag(@item.image, style: "width:100%") %>
+      <%else%>
+        <p>=== Image ===</p>
+      <%end%>
+
+      <%if current_user == nil %>
+      <%elsif current_user.email == "zekittenproject@gmail.com"%>
+        <%= form_tag item_images_path(@item), multipart: true do %>
+          <%= file_field_tag :image %>
+          <%= submit_tag "mettre à jour" %>
+        <% end %>
+      <%else%>
+      <% end %>
+
+    </div>
+    <div class="col-5 order-first">
+      <p><%= @item.description %></p>
+      <br>
+      <h5 class="card-text"> Prix de la photo: <%= @item.price %>€</h5>
+      
+      <% if user_signed_in? %>
+        <%= link_to 'Ajouter au panier', item_cart_items_path(@item.id), id: "linkto", class:"btn btn-secondary btn-sm border border-secondary", method: :post, remote: true %>
+      <% else %>
+        <%= link_to 'Ajouter au panier', item_cart_items_path(@item.id), id: "linkto", class:"btn btn-secondary btn-sm border border-secondary", method: :post %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

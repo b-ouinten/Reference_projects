@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs col-md-6 offset-md-3 text-center">
+      <br/><br/><br/>
+      <%= form_for Attendance.new, url: event_attendances_path(@event.id) do |f| %>
+        <div>
+          <% if flash[:error].present? %>
+            <div class="alert alert-warning" id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+          <label class="col-form-label">
+            <span>To join event please pay this amount : <%= @event.price / 100.00 %> €</span>
+          </label>
+        </div>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="<%= @event.price %>"
+                data-currency="eur"
+                data-locale="auto"></script>
+        <input type="hidden" name="occasion_id" value=<%= @event.id %>>
+        <input type="hidden" name="participant_id" value=<%= current_user.id%> >
+      <% end %>
+    </div>
+  </div>
+</div>

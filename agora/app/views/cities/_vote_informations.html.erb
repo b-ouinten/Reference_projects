@@ -1,0 +1,20 @@
+<td class='vote-info text-center'>
+  <%if user_signed_in?%>
+    <% if is_current_user_owner_of?(x) %>
+      <p class='text-muted text-wrap text-center' style='font-style: italic;'>Vous ne pouvez pas voter pour votre proposition !</p>
+    <% elsif current_user_arent_the_city_of?(x) %>
+      <p class='text-muted text-wrap text-center' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
+    <% else %>
+      <div id='btns-<%= x.id %>' class='text-center'>
+        <%if x.vote_of(current_user)%>
+          <%= render 'cities/del_vote_btn', x: x %>
+        <%else%>
+          <%= render 'cities/add_vote_btn', x: x %>
+        <%end%>
+      </div>
+    <% end %>
+  <%else%>
+    <p class='text-center'>Connectez-vous pour pouvoir voter !</p>
+  <%end%>
+    <%= render 'cities/votes_count', x: x %>
+</td>

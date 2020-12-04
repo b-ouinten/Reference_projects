@@ -1,0 +1,39 @@
+<br>
+<br>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card">
+          <form id="RegisterValidation" action="" method="">
+            <div class="card-header card-header-icon" data-background-color="blue">
+              <i class="material-icons">help_outline</i>
+            </div>
+            <div class="card-content">
+              <h4 class="card-title">Mot de passe oublié ?</h4>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :email, "Email" %>                                               
+                </label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Envoyer le mail de récupération", class: "btn btn-primary" %>
+              </div>
+              <%= render "devise/shared/links" %>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="cold-4"></div>
+    </div>
+  </div>
+</div>
+<% end %>
+<br>
+<br>
+
+

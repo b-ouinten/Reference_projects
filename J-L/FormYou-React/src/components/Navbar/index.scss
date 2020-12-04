@@ -1,0 +1,21 @@
+.navbar {
+  
+  #nav-brand {
+    margin-left: 15%;
+  }
+
+  #navbarSupportedContent {
+    margin-right: 10%;
+  }
+
+  &::after {
+  content:"";
+  position: absolute;
+  bottom: 0;
+  right: auto;
+  background-color: black;
+  height: 1px;
+  width: 70%;
+  margin-left: 15%;
+  }
+}

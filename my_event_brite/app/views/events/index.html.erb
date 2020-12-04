@@ -1,0 +1,21 @@
+<div class="container-fluid mt-4">
+  <div class="jumbotron p-0 mb-3">
+    <%= image_tag 'index/home_picture.jpg', class: 'img-fluid w-100' %>
+  </div>
+  <p class="h4 font-weight-bold mb-3" style="font-size: 3vh">Hi there ! These are all the events in you city.</p>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-xs col-sm-2 col-md-4 mb-3">
+        <div class="card shadow">
+          <%= image_tag 'index/event.jpg', class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title text-uppercase"><%= event.title %></h5>
+            <p class="card-text"><%= event.description %></p>
+            <p> <%= event.start_date.strftime('%d/%m/%Y at %I:%M %p') %> </p>
+            <a href=<%= event_path(event.id) %> class="btn btn-warning">More details</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

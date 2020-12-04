@@ -1,0 +1,81 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="card card-profile box">
+        <%if @user.avatar.attached?%>
+          <div class="card-avatar">
+            <%= image_tag @user.avatar, alt: 'Avatar', style: "width: 100%; height: auto;"%>
+          </div>
+        <%else%>
+          <div class="card-avatar">
+            <%= image_tag("avatar.png", style: "width:100%; height: auto;")%> 
+          </div>
+        <%end%>
+        <div class="card-content">
+          <h6 class="category text-gray">Mes informations</h6>
+          <br>
+          <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h4>
+          <p class="text"><%= @user.email %></p>
+          <div>
+            <p class='text-success' style='margin-bottom: 0px;'>Jetons de vote</p>
+            <% if current_user_vote_tokens == 0 %>
+              <em class='text-muted text-wrap text-center'>Désolé ! Vous n'avez aucun jeton de vote pour le moment, attendez le prochain renouvellement le <%= current_user_next_renewal_of_vote_tokens_date.strftime('%d/%m/%Y à %H:%M') %> ou dévotez pour des propositions qui vous semblent moins pertinentes !</em>
+            <% else %>
+              <% current_user_vote_tokens.times do %>
+                <i class='material-icons text-success' style='font-size: 19px;'>sentiment_satisfied_alt</i>
+              <% end %><br>
+            <% end %>
+          </div>
+          <%= link_to "#{@user.city.name}", city_path(@user.city), class: 'btn btn-primary btn-round btn-xs' %>
+          <br>
+          <div class="p-1 mb-1">
+            <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , editer_mon_profil_path, class: "btn btn-primary" %>
+            <%= link_to 'Paramètres &nbsp <i class="material-icons" style="font-size: 19px">settings</i>'.html_safe, edit_user_registration_path, class: "btn btn-primary" %> 
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <%if @proposals.count != 0 %>
+      <br>
+      <br>
+      <div class="col">
+        <div class="card box">
+          <div class="card-header card-header-text" data-background-color="blue">
+            <h4 class="card-title">Mes propositions</h4>
+          </div>
+          <div class="card-content "> 
+            <table class="table">
+              <tbody>
+                <% @proposals.each do |proposal| %>
+                  <tr>
+                    <td><h5><%= proposal.title %></h5></td>
+                    <% if proposal.is_online %>
+                      <td class="text-right"> 
+                      <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(proposal) %>" role="button">
+                        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                      </a>
+                      </td>
+                    <%else%>
+                      <td class="text-right text-primary"><p></h2>En cours de validation <i class="material-icons" style="font-size: 13px">hourglass_empty</i></p>
+                    <%end%>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <%else%>
+      <div class="col">
+        <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
+      </div>
+    <% end %>
+  </div>
+</div>

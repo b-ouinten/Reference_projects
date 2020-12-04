@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <%= form_for :session, url: sessions_path do |f| %>
+    <div class="row d-flex flex-row justify-content-center">
+      <div class="col-xs col-md-3">
+        <div class="form-group">
+          <div>
+            <%= f.label :email, "Email :", class: 'col-form-label' %>
+            <%= f.text_field :email, class: "form-control form-control-sm" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs col-md-3">
+        <div class="form-group">
+          <div>
+            <%= f.label :password, "Password", class: 'col-form-label' %>
+            <%= f.password_field :password, class: "form-control form-control-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex flex-column align-items-center">
+        <%= submit_tag "Login", class: "btn btn-info btn-block mb-3", style: "width: 150px; height: 35px;" %>
+        <div>
+          <p>Not yet a member ! <%= link_to "You can sign up here.", new_user_path, style: "text-decoration: none" %> </p>
+        </div>
+    </div>
+  <% end %>
+</div>

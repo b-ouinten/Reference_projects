@@ -1,0 +1,8 @@
+<div class="container-fluid mt-3">
+  <div class="alert alert-info text-center">
+    <p>Congratulations ! your <%= class_name %> has been successfuly created</p>
+    <% if class_name == Gossip %>
+      <%= link_to "click to view all the gossips", gossips_path %>
+    <% end %>
+  </div>
+</div>

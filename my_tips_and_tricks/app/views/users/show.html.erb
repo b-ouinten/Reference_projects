@@ -1,0 +1,16 @@
+<div class="container-fluid position-absolute mt-4">
+  <h3 class="text-center font-weight-bold">User informations</h3>
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs">
+      <div class="card shadow-sm alert alert-primary">
+        <div class="card-body">
+          <h5 class="card-title text-center font-weight-bold"><%= @user.first_name %> <%= @user.last_name %></h5>
+          <h5 class="card-title text-center"><span class="badge badge-danger"><%= @user.email %></span></h5>
+          <h6 class="card-text text-center"><%= @user.age%> years old</h6>
+          <h6 class="card-text text-center"><span class="font-weight-bold">from :</span> <%= @user.city.name%></h6>
+          <p class="card-text text-center"><%= @user.description%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

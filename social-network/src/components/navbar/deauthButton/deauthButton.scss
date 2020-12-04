@@ -1,0 +1,27 @@
+@import 'src/common';
+
+.deauth-button {
+  display: flex;
+  margin: 0;
+  padding: 14px 15px;
+  background-color: $default-background-color;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  color: $text-color;
+  font-size: 1.2rem;
+  
+  &:hover {
+    color: $main-color;
+    background-color: lighten($main-color, 35%);
+  }
+  
+  &:focus {
+    color: $main-color;
+    outline: 0;
+  }
+
+  span {
+    margin-left: 1rem;
+  }
+}

@@ -1,0 +1,31 @@
+Mise en relation avec les utilisateur ayant votés pour votre proposition
+
+========================================================
+
+                             Bonjour <%= @user.first_name %> !
+
+
+Cet email vous informe que votre proposition a été validée par la communauté. Vous pouvez toujours vous rendre sur <%= link_to "Agora.com", @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
+
+Voici des liens utiles qui vous aideront à mettre en place votre projet :
+       
+  <%= link_to "- Comment mettre en place une démocratie participative", @url1 %> 
+ 
+  <%= link_to "- Les démarches de participation citoyenne", @url2 %> 
+     
+  <%= link_to "- Monter un projet", @url3 %> 
+ 
+  <%= link_to "- Qu'est-ce qu'un projet citoyen?", @url4 %> 
+  
+  <%= link_to "- Budget participatif", @url4 %> 
+    
+  <%= link_to "- Modalités de participation des citoyens aux décisions locales", @url5 %> 
+       
+  <%= link_to "- Exemple de dossier à monter", @url6 %> 
+    
+
+Nous vous envoyons en pièce jointe la liste des citoyens ayant soutenus votre proposition. N'hésitez pas à prendre contact avec eux rapidement !
+
+Encore bravo pour votre super idée et à très vite sur Agora !
+      
+L'équipe Agora.

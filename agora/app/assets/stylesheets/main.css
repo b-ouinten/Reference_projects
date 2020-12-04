@@ -1,0 +1,190 @@
+.text-white-footer img {
+  position: relative;
+  height: auto;
+  width: 50%;
+  margin-top: -3em;
+  margin-bottom: -90px;
+} 
+
+
+.logo img {
+  position: relative;
+  height: auto;
+  width: 50%;
+  bottom: 23px;
+  margin-left: -1px;
+} 
+
+.logo img {
+  position: relative;
+  height: auto;
+  width: 50%;
+  bottom: 23px;
+  margin-left: -1px;
+} 
+
+.drop{  
+  position: relative;
+  margin-left: -7em;
+} 
+
+.font-brand {
+  font-size: 35px;
+  bottom: 3px;
+} 
+
+body {
+background-color: #FFFFFF !important;
+}
+
+.text-wrap {
+  overflow-wrap: break-word;
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .text-responsive {
+    font-size: 38px;
+  }
+}
+
+.idea-icon {
+  position: relative;
+  top: 6px;
+  left: 1px;
+}
+
+.vote-icon {
+  position: relative;
+  top: 3px;
+  left: 1px;
+}
+
+.group-icon {
+  position: relative;
+  top: 7px;
+  left: 1px;
+}
+
+.text-home {
+  position: relative;
+  top: 25px;
+}
+
+.img-top {
+  position: relative;
+  top: 50px;
+}
+
+.img-center {
+  position: relative;
+  bottom: 30px;
+  top: 15px;
+}
+
+.img-group {
+  position: relative;
+  bottom: 20px;
+}
+
+.img-bottom {
+  position: relative;
+  bottom: 3px;
+}
+
+.city {
+  position: relative;
+  top: 25px;
+}
+
+.box:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.my-jumbotron
+{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.my-img
+{
+  max-width: 100%; 
+  max-height: 100%; 
+  display: block;
+}
+
+.flex-row-start-center
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.border
+{
+  border: 1px black solid;
+}
+
+.badge
+{
+  background-color: #00bcd4;
+}
+
+.footer-down
+{
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #bdbdbd ;
+  background-color: white ;
+}
+
+.text-white-footer
+{
+  color: #212121;
+}
+
+.img-and-after {
+  position: relative;
+  top: 5px;
+  left: 0px;
+}
+
+.nav-btn {
+  position: relative;
+  top: 1px;
+}
+
+.img-profile {
+  position: relative;
+  bottom: 15px;
+  
+}
+
+.nav-icon {
+  position: relative;
+  bottom: 3px;
+}
+
+.nav-icon-settings {
+  position: relative;
+  bottom: 1px;
+}
+
+.zoom {
+  transition: transform 0.5s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+#scroll-top-btn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 10px; /* Place the button at the bottom of the page */
+  right: 10px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+}

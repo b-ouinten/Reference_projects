@@ -1,0 +1,11 @@
+<div id='<%= y.id %>'>
+  <br><b><i class="material-icons" style="font-size: 17px">face</i> <%=" " %><%= y.user.first_name %><%= " " %><%= y.user.last_name %></b><br><br>
+  <p class='text-wrap'><%= y.content %></p>
+  <small class='text-muted' style='font-style: italic;'>Message posté le <%= y.created_at.to_formatted_s(:short) %></small>
+  <%if user_signed_in?%>
+    <%if current_user.id == y.user.id %>
+      <%= link_to 'effacer', proposal_comment_comment_path(proposal.id, x.id, y.id), class: 'btn btn-danger btn-xs',method: :delete, remote: true %>
+    <%end%>
+  <%end%>
+  <br><br>
+</div>

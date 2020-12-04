@@ -1,0 +1,23 @@
+$(document).ready(function() {
+  <% unless params[:comment_id] %>
+    <% unless @errors %>
+      proposalCommentsContainer = $('tbody#proposal-comments');
+      proposalCommentsContainer.prepend('<%= j render 'proposals/proposal_comment', x: @comment, proposal: @proposal %>');
+      commentContentTextArea = $('p#comment-content > textarea');
+      commentContentTextArea.val('');    
+    <% else %>
+      swal('<%= @errors %></p>')
+    <% end %>
+  <% else %>
+    <% unless @errors %>
+      commentId = <%= @comment.id %>
+      proposalComment = $('tr#' + commentId);
+      commentCommentsContainer = proposalComment.find('div#comment-comments');
+      commentCommentsContainer.prepend('<%= j render 'proposals/proposal_comment_comment', y: @comment_comment, x: @comment, proposal: @proposal %>')
+      commentCommentContentTextArea = $('p#comment-comment-content > textarea');
+      commentCommentContentTextArea.val('');
+    <% else %>  
+      swal('<%= @errors %></p>')
+    <% end %>
+  <% end %>
+});

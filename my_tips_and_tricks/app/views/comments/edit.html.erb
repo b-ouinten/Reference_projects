@@ -1,0 +1,20 @@
+<div class="container-fluid mt-3">
+  <div class="mb-3">
+    <%= form_tag gossip_comment_path(@comment.gossip_id, @comment.id), method: "delete" do %>
+      <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
+    <% end %>
+  </div>
+  <%= form_tag gossip_comment_path(@comment.gossip_id, @comment.id), method: 'patch' do %>
+    <div class="row">
+      <div class="col-xs col-md-6">
+        <div class="form-group">
+          <div>
+            <%= label_tag 'content', "You can make edit comment here !", class: "col-form-label" %>
+            <%= text_area_tag 'content', @comment.content, rows: 3, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= submit_tag "Update", class: "btn btn-info btn-sm"%>
+  <% end %>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Informations sur la proposition en instance de validation </h1>
+    </p> Cette proposition a été postée par <%= @user.first_name %> <%= @user.last_name %> le <%= @proposal.created_at %></p>
+      <p>ID : 
+         <%= @proposal.id %> 
+      </p>
+      <p>Titre :
+         <%= @proposal.title %>
+      </p>
+      <p>Description : 
+         <%= @proposal.description %>
+      </p>
+      <p>Objectif : 
+         <%= @proposal.purpose %> 
+      </p>
+      <p>Ville :
+         <%= @city.name%> 
+      </p>
+      <p>Catégorie :
+         <%= @category.name %> 
+      </p>
+  </body>
+</html>

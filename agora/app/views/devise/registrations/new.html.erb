@@ -1,0 +1,77 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<br>
+<br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card">
+          <form id="RegisterValidation" action="" method="">
+            <div class="card-header card-header-icon" data-background-color="blue">
+              <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+              <h4 class="card-title">Inscription</h4>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :first_name, "Prénom ⁽¹⁾" %>                                              
+                </label>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :last_name, "Nom ⁽¹⁾" %>
+                </label>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :email, "Email ⁽¹⁾ ⁽²⁾" %>                                                                      
+                </label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :city, "Ville ⁽¹⁾ (D'autres villes arrivent bientôt !)" %>                                                                   
+                </label>
+                <br>
+                <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"} %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :password, "Mot de passe ⁽¹⁾" %>
+                  <% if @minimum_password_length %>
+                  (<%= @minimum_password_length %> caractères minimum)
+                  <% end %><br />                            
+                </label>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :password_confirmation, "Confirmation du mot de passe ⁽¹⁾" %><br />                                              
+                </label>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+              </div>
+              <div class="category form-category">
+                <small>⁽¹⁾<em> Champs obligatoires</em></small>
+                <br>
+                <small>⁽²⁾<em> En vous inscrivant, vous acceptez que votre email soit communiqué à l'initiateur d'un projet, 
+                dans le cas où ce concept serait validé par Agora</em></small>
+              </div>
+              <%= f.submit "Je m'inscris !", class: "btn btn-primary" %>
+              <%= render "devise/shared/links" %>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
+<% end %>
+<br><br>
+
+

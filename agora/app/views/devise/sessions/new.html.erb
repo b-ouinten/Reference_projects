@@ -1,0 +1,48 @@
+<br>
+<br>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card">
+          <form id="RegisterValidation" action="" method="">
+            <div class="card-header card-header-icon" data-background-color="blue">
+              <i class="material-icons">login</i>
+            </div>
+            <div class="card-content">
+              <h4 class="card-title">Connexion</h4>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :email, "Email" %>                                               
+                </label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+              <div class="form-group label-floating">
+                <label class="control-label">
+                  <%= f.label :password, "Mot de passe" %>                                               
+                </label>
+                <%= f.password_field :password, autofocus: true, autocomplete: "current-password", class: "form-control" %>
+              </div>
+              <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+              <% end %>
+              <div class="actions">
+                <%= f.submit "Se connecter", class: "btn btn-primary" %>
+              </div>
+              <%= render "devise/shared/links" %>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
+<% end %>
+<br>
+<br>
