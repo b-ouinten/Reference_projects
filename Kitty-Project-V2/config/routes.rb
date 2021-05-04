@@ -1,23 +1,36 @@
 Rails.application.routes.draw do
+  get 'provisional_cart_items/index'
+  get 'provisional_cart_items/create'
   root 'items#index'
-  devise_for :users
-  resources :carts, except: :show
+  
+  # devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   resources :users, except: [:show, :edit]
-  resources :orders
-  resources :cart_items
-  resources :items do 
-    resources :cart_items
-  end
-  resources :items, only: [:show] do
-    resources :images, only: [:create]
-  end
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
+  
+  resources :orders
+
+  resources :items
+  
+  resources :cart_items, only: [:index, :update, :destroy]
+  resources :items do 
+    resources :cart_items, only: [:create]
+  end
+
+  resources :provisional_cart_items, only: [:index, :update, :destroy]
+  resources :items do
+    resources :provisional_cart_items, only: :create
+  end
+  
   resources :categories do
     resources :items
   end
-  resources :items
+  
+  resources :items, only: [:show] do
+    resources :images, only: [:create]
+  end
 
   # Add pesonalized routes
   get '/mon_panier', to: 'carts#show', as: 'mon_panier'

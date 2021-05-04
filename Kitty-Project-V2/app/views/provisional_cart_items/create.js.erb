@@ -1,0 +1,9 @@
+itemId = <%= @item.id %>;
+addItemBtn = $('div#' + itemId + '-add-to-cart-btns-container > a.btn');
+addItemBtn.blur();
+
+document.getElementById("items-count").innerHTML = "<%= disconnected_user_cart_items_count %>";
+<% if !@provisional_cart_item.nil? && @provisional_cart_item.invalid? %>
+  alert('<%= purify_message(@provisional_cart_item.errors.full_messages.to_sentence) %>');
+<%end%>
+window.scrollTo(0, 0);

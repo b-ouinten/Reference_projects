@@ -6,18 +6,16 @@
   <body>
     <h1>Merci pour votre commande</h1>
     </p> Commande numéro <%= @order.id %></p>
-
     <br>
     <br>
-
-  
- <%= @order.items.each do |item| %>
-<%= image_tag(item.image,  :size => "260x180") %> 
-  <%end%>
- <br>
- <br>
-
- <p>
+    <% @order.items.each_with_index do |item, index| %>
+      <% if item.image.attached? %>
+        <%= image_tag attachments[@filenames[index]].url, :size => "260x180" %> 
+      <% end %>
+    <%end%>
+    <br>
+    <br>
+    <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
     </p>
     <p> À très vite sur Ze Kitten Project !</p>

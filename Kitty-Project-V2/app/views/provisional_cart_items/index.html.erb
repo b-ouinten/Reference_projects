@@ -1,0 +1,49 @@
+<div id='provisional-cart-items' class="container center_div">
+  <% if @provisional_cart_items.count != 0 %>
+    <div id="recap" class="texte-bienvenue text-center">
+      <br>
+      <h2>Voici un récapitulatif de votre commande</h2>
+      <br>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-active">
+          <th scope="col">PHOTO</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Prix</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @provisional_cart_items.each do |x| %>
+          <tr id='<%= x.id %>'>
+            <%if x.item.image.attached? %>
+              <td><%= image_tag x.item.image, alt: "Card image", width: 120, height: 80 %></td>
+            <%else%>
+              <th><p>=== Image ===</p></th>
+            <%end%>
+            <td><%= x.item.title %></td>
+            <td><%= select_tag 'quantity', options_for_select((1..10), x.quantity), class: 'form-control form-control-sm w-auto' %></td>
+            <td><%= x.item.price %>€</td>
+            <td><%= link_to "Supprimer", provisional_cart_item_path(x.id), method: 'delete', :class => "btn btn-danger btn-sm", remote: true %></td>
+          </tr>
+        <%end%>
+        <tr class="table-primary">
+          <th>Total</th>
+          <td></td>
+          <td id="total-quantities" class='pl-5' ><%= @total_quantities %></td>
+          <td id="total"><%= @total %>€</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <%= link_to 'Revenir à l\'accueil', root_path, class: 'btn btn-secondary text-decoration-none' %>
+    <%= link_to "Passer Commande", new_order_path, :class => "btn btn-primary text-decoration-none" %>
+    <br>
+  <%else%>
+    <%= render 'provisional_cart_items/picture_indicating_empty_provisional_cart' %>
+  <%end%>
+</div>

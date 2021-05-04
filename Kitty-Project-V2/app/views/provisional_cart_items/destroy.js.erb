@@ -1,0 +1,10 @@
+document.getElementById("<%= @provisional_cart_item_id %>").remove();
+document.getElementById("items-count").innerHTML = "<%= disconnected_user_cart_items_count %>";
+document.getElementById("total-quantities").innerHTML = '<%= disconnected_user_cart_items_count %>';
+document.getElementById("total").innerHTML = '<%= disconnected_user_cart_total %>';
+
+<% if disconnected_user_cart_items_count == 0 %>
+  itemsContainer = $('div#provisional-cart-items');
+  itemsContainer.empty();
+  itemsContainer.append('<%= j render 'provisional_cart_items/picture_indicating_empty_provisional_cart' %>')
+<% end %>

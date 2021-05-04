@@ -24,15 +24,15 @@ ApplicationRecord.descendants.each { |model|
 
 puts "Les villes ont été créées"
 
-10.times do 
-  User.create!(
-    first_name: Faker::Name.first_name, 
-    last_name: Faker::Name.last_name,
-    city: City.all.sample,
-    email: Faker::Internet.email,
-    password: "ririri"
-  )
-end
+# 10.times do 
+#   User.create!(
+#     first_name: Faker::Name.first_name, 
+#     last_name: Faker::Name.last_name,
+#     city: City.all.sample,
+#     email: Faker::Internet.email,
+#     password: "ririri"
+#   )
+# end
 
 puts "Les utilisateurs ont été créées"
 

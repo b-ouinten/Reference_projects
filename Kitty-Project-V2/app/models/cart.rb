@@ -3,15 +3,15 @@ class Cart < ApplicationRecord
   has_many :cart_items
   has_many :items, through: :cart_items
 
-  def total
-    items_prices = self.items.map { |item|
-      item.price
+  def items_count
+    self.cart_items.sum(0) { |rec|
+      rec.quantity
     }
-
-    items_prices.sum
   end
 
-  def items_count
-    self.items.count
+  def total
+    self.cart_items.sum(0.0) { |rec|
+      rec.quantity * rec.item.price
+    }
   end
 end

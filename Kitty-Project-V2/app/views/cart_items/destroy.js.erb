@@ -1,9 +1,10 @@
-console.log('destroy.js.erb')
 document.getElementById("<%= @cart_item_id %>").remove();
-document.getElementById("total_quantity").innerHTML = '<%= current_user_cart_items_count %>';
-document.getElementById("total_price").innerHTML = '<%=current_user_cart_total %>';
-document.getElementById("items_count").innerHTML = "<%= current_user_cart_items_count %>";
+document.getElementById("items-count").innerHTML = "<%= current_user_cart_items_count %>";
+document.getElementById("total-quantities").innerHTML = '<%= current_user_cart_items_count %>';
+document.getElementById("total").innerHTML = '<%=current_user_cart_total %>';
 
 <% if current_user_cart_items_count == 0 %>
-  window.location = '<%= mon_panier_path%>'
+  itemsContainer = $('div#cart-items');
+  itemsContainer.empty();
+  itemsContainer.append('<%= j render 'cart_items/picture_indicating_empty_cart' %>')
 <% end %>

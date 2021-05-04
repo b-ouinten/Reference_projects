@@ -1,5 +1,10 @@
-document.getElementById("items_count").innerHTML = "<%= current_user_cart_items_count %>";
-<% if @cart_item.invalid? %>
-  alert('<%= purify_message(@cart_item.errors.full_messages.to_sentence) %>')
+itemId = <%= @item.id %>;
+addItemBtn = $('div#' + itemId + '-add-to-cart-btns-container > a.btn');
+addItemBtn.blur();
+
+document.getElementById("items-count").innerHTML = "<%= current_user_cart_items_count %>";
+
+<% if !@cart_item.nil? && @cart_item.invalid? %>
+  alert('<%= purify_message(@cart_item.errors.full_messages.to_sentence) %>');
 <%end%>
 window.scrollTo(0, 0);

@@ -16,8 +16,8 @@
         </div>
         <div class="card-content">
           <h4 class="card-title">Modifier le mot de passe / email</h4>
-           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
-           <%= render "devise/shared/error_messages", resource: resource %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
               <div class="row">
                 <label class="col-md-3 label-on-left"> <%= f.label :email, "Email" %></label>                                              
                   <div class="col-md-9">
